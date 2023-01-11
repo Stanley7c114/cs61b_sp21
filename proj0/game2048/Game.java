@@ -6,7 +6,7 @@ import static game2048.Side.*;
  *  @author P. N. Hilfinger. */
 public class Game {
 
-    /** Controller for a game represented by MODEL, using SOURCE as the
+    /** Controller for a game represented by MODEL, using SOURCE as
      *  the source of key inputs and random Tiles. */
     public Game(Model model, InputSource source) {
         _model = model;
@@ -14,7 +14,7 @@ public class Game {
         _playing = true;
     }
 
-    /** Return true iff we have not received a Quit command. */
+    /** Return true if we have not received a Quit command. */
     boolean playing() {
         return _playing;
     }

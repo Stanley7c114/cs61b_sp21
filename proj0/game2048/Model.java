@@ -3,9 +3,8 @@ package game2048;
 import java.util.Formatter;
 import java.util.Observable;
 
-
 /** The state of a game of 2048.
- *  @author TODO: YOUR NAME HERE
+ *  @author Stanley
  */
 public class Model extends Observable {
     /** Current contents of the board. */
@@ -25,7 +24,7 @@ public class Model extends Observable {
     /** Largest piece value. */
     public static final int MAX_PIECE = 2048;
 
-    /** A new 2048 game on a board of size SIZE with no pieces
+    /** A new 2048 game on a board of SIZE with no pieces
      *  and score 0. */
     public Model(int size) {
         board = new Board(size);
@@ -33,7 +32,7 @@ public class Model extends Observable {
         gameOver = false;
     }
 
-    /** A new 2048 game where RAWVALUES contain the values of the tiles
+    /** A new 2048 game where RAW-VALUES contain the values of the tiles
      * (0 if null). VALUES is indexed by (row, col) with (0, 0) corresponding
      * to the bottom-left corner. Used for testing purposes. */
     public Model(int[][] rawValues, int score, int maxScore, boolean gameOver) {
@@ -137,7 +136,14 @@ public class Model extends Observable {
      *  Empty spaces are stored as null.
      * */
     public static boolean emptySpaceExists(Board b) {
-        // TODO: Fill in this function.
+        // TODO: Fill in this function.(Done)
+        for (int i = 0; i < b.size() ; i++) {
+            for (int j = 0; j < b.size(); j++) {
+                if (b.tile(i,j) == null){
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -147,7 +153,18 @@ public class Model extends Observable {
      * given a Tile object t, we get its value with t.value().
      */
     public static boolean maxTileExists(Board b) {
-        // TODO: Fill in this function.
+        // TODO: Fill in this function.(Done)
+        for (int i = 0; i < b.size() ; i++) {
+            for (int j = 0; j < b.size(); j++) {
+                Tile t = b.tile(i,j);
+                if (t != null) {
+                    if (t.value() == MAX_PIECE) {
+
+                        return true;
+                    }
+                }
+            }
+        }
         return false;
     }
 
@@ -159,6 +176,14 @@ public class Model extends Observable {
      */
     public static boolean atLeastOneMoveExists(Board b) {
         // TODO: Fill in this function.
+        for (int i = 0; i < b.size() ; i++) {
+            for (int j = 0; j < b.size(); j++) {
+                Tile t = b.tile(i,j);
+                if (t == null){
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
